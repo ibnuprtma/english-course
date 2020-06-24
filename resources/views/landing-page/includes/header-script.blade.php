@@ -1,6 +1,6 @@
 <!-- <link rel="manifest" href="site.webmanifest"> -->
 <!-- Place favicon.ico in the root directory -->
-
+<link href="{{ asset('assets/argon/img/brand/favicon.png')}}" rel="icon" type="image/png">
 <!-- CSS here -->
 <link rel="stylesheet" href="{{ asset('assets/seogo/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/seogo/css/owl.carousel.min.css')}}">

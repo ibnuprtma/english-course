@@ -7,7 +7,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="/dashboard">
-            <h1 class="text-primary font-weight-bold">SHCleanerz</h1>
+            <h1 class="text-primary font-weight-bold">English Course</h1>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
