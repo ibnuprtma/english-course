@@ -23,7 +23,7 @@
                     <div class="footer_widget">
                         <div class="footer_logo">
                             <a href="#">
-                                <img src="{{ asset('assets/seogo/img/footer_logo.png')}}" alt="">
+                                <img src="{{ asset('/img/logo2.png')}}" alt="">
                             </a>
                         </div>
                         <p>

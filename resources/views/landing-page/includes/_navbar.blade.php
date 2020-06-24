@@ -6,8 +6,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-3 col-lg-2">
                         <div class="logo">
-                            <a href="index.html">
-                                <img src="{{ asset('assets/seogo/img/logo.png')}}" alt="">
+                            <a href="/">
+                                <img src="{{ asset('/img/logo.png')}}" alt="">
                             </a>
                         </div>
                     </div>
