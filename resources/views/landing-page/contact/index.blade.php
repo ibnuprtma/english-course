@@ -4,7 +4,7 @@
     <!-- bradcam_area  -->
     <div class="bradcam_area">
         <div class="bradcam_shap">
-            <img src="img/ilstrator/bradcam_ils.png" alt="">
+            <img src="{{ asset('assets/seogo/img/ilstrator/bradcam_ils.png')}}" alt="">
         </div>
         <div class="container">
             <div class="row">
