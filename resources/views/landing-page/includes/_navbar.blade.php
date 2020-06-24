@@ -15,10 +15,10 @@
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="services.html">Pricing</a></li>
-                                    <li><a href="Case_Study.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="{{ route('landing-page.pricing')}}">Pricing</a></li>
+                                    <li><a href="{{ route('landing-page.about-us')}}">About Us</a></li>
+                                    <li><a href="{{ route('landing-page.contact')}}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
