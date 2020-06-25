@@ -10,7 +10,34 @@ Route::name('admin.')->group(function () {
 
   ], function () {
 
-    Route::view('/dashboard', '/admin/dashboard')->name('dashboard');
+    
+  });
+});
+
+
+Route::name('admin.')->group(function () {
+  Route::group([
+
+    'namespace'     => 'admin',
+    'prefix'        => 'admin',
+    'middleware'    => ['auth','checkRole:student'],
+
+  ], function () {
+
+    
+  });
+});
+
+Route::name('admin.')->group(function () {
+  Route::group([
+
+    'namespace'     => 'admin',
+    'prefix'        => 'admin',
+    'middleware'    => ['auth','checkRole:student,admin'],
+
+  ], function () {
+
+    Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
     
   });
 });

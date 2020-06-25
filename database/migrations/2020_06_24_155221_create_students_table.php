@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('postalcode')->nullable();
             $table->text('address')->nullable();
             $table->date('birthday')->nullable();
-            $table->string('status');
+            $table->string('level');
             $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
