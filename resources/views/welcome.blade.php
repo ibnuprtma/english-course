@@ -24,7 +24,14 @@
                                     BoostUp your Business & Get <br>
                                         top of Search Engine
                                 </h3>
-                            <a class="boxed-btn3" href="#">Get Started</a>
+
+                                @if (Route::has('login'))
+                                @auth    
+                                    <a class="boxed-btn3" href="">Welcome, {{Auth::user()->username}}</a>
+                                @else
+                                    <a class="boxed-btn3" href="">Get Started</a>
+                                @endauth
+                                @endif
                             </div>
                             <div class="ilstrator_thumb">
                                 <img src="{{ asset('assets/seogo/img/ilstrator/illustration.png')}}" alt="">

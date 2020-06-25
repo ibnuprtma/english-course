@@ -24,12 +24,22 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                        <div class="Appointment">
-                            <div class="book_btn d-none d-lg-block">
-                                <a  href="#">Register</a>
-                                <a  href="#" style="background:#ff008c;color:white">Login</a>
+                        @if (Route::has('login'))
+                            @auth
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a  href="/admin/dashboard">Entry Admin</a>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a  href="/register">Register</a>
+                                    <a  href="/login" style="background:#ff008c;color:white">Login</a>
+                                </div>
+                            </div>
+                            @endauth
+                        @endif
                     </div>
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
