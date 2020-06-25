@@ -5,7 +5,8 @@ Route::name('admin.')->group(function () {
   Route::group([
 
     'namespace'     => 'admin',
-    'prefix'        => 'admin'
+    'prefix'        => 'admin',
+    'middleware'    => 'auth',
 
   ], function () {
 
