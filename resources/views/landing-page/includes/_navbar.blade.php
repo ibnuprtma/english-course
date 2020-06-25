@@ -28,7 +28,7 @@
                             @auth
                             <div class="Appointment">
                                 <div class="book_btn d-none d-lg-block">
-                                    <a  href="/admin/dashboard">Entry Admin</a>
+                                    <a  href="/admin/dashboard">Entry Dashboard</a>
                                 </div>
                             </div>
                         @else

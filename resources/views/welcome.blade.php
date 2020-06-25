@@ -27,7 +27,13 @@
 
                                 @if (Route::has('login'))
                                 @auth    
-                                    <a class="boxed-btn3" href="">Welcome, {{Auth::user()->username}}</a>
+                                    <a class="boxed-btn3" href="">Welcome,
+                                        @if(isset(Auth::user()->student->firstname))
+                                            {{Auth::user()->student->firstname}}
+                                        @else
+                                            admin
+                                        @endif
+                                    </a>
                                 @else
                                     <a class="boxed-btn3" href="">Get Started</a>
                                 @endauth
