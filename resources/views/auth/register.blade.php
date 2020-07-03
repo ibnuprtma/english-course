@@ -62,7 +62,7 @@
                                                         <div class="col-6">
                                                             <div class="form-group text-left">
                                                                 <label for="religion">Religion</label>
-                                                                <select id="religion" class="form-control" name="religion">
+                                                                <select id="religion" class="form-control" name="religion_id">
                                                                     <option value="1">Moslem</option>
                                                                     <option value="2">christian</option>
                                                                     <option value="3">buddha</option>
@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="form-group text-left">
                                                         <label for="level">Level</label>
-                                                        <select id="level" class="form-control" required>
+                                                        <select id="level" class="form-control" name="level" required>
                                                           <option value="beginner">Beginner</option>
                                                           <option value="basic">Basic</option>
                                                           <option value="intermediate">Intermediate</option>
