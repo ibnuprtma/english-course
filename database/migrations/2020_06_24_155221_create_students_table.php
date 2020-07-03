@@ -20,11 +20,8 @@ class CreateStudentsTable extends Migration
             $table->string('lastname')->nullable();
             $table->string('gender');
             $table->string('phone');
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
-            $table->string('postalcode')->nullable();
             $table->text('address')->nullable();
-            $table->date('birthday')->nullable();
+            $table->date('birthdate')->nullable();
             $table->string('level');
             $table->string('image')->nullable();
             $table->timestamps();
