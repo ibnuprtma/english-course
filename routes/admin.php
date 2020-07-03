@@ -13,7 +13,7 @@ Route::name('admin.')->group(function () {
     Route::resource('students', 'StudentController');
     Route::resource('payments', 'PaymentController');
     Route::resource('questions', 'QuestionController');
-    Route::resource('user', 'UserController');
+    Route::resource('users', 'UserController');
 
   });
 });
