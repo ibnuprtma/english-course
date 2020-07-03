@@ -21,7 +21,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h2 class="card-title px-3 pt-3 text-left">Register</h2>
-                                        <p class="text-primary text-left alert" style="font-size:14px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum earum, expedita quod quibusdam deserunt voluptas numquam consequuntur autem hic ipsam reprehenderit. Cum quisquam dolore alias, aliquam sed ipsam? Iusto, quo.</p>
+                                        <p class="text-left alert" style="font-size:14px; color:#ff008c;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum earum, expedita quod quibusdam deserunt voluptas numquam consequuntur autem hic ipsam reprehenderit. Cum quisquam dolore alias, aliquam sed ipsam? Iusto, quo.</p>
                                         <hr>
                                         <form method="POST" action="{{ route('landing-page.register-student') }}">
                                             @csrf
