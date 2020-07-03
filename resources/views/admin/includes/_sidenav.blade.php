@@ -104,22 +104,22 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('student*') ? 'active' : '' }}" href="{{ route('admin.student.index')}}">
                             <i class="ni ni-badge text-pink"></i> Siswa
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('payment*') ? 'active' : '' }}" href="{{ route('admin.payment.index')}}">
                             <i class="ni ni-bullet-list-67 text-green"></i> Konfirmasi Pembayaran
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('question*') ? 'active' : '' }}" href="{{ route('admin.question.index')}}">
                             <i class="ni ni-spaceship text-primary"></i> Soal
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('admin.user.index')}}">
                             <i class="ni ni-circle-08 text-red"></i> User
                         </a>
                     </li>

@@ -10,10 +10,10 @@ Route::name('admin.')->group(function () {
 
   ], function () {
 
-    Route::resource('students', 'StudentController');
-    Route::resource('payments', 'PaymentController');
-    Route::resource('questions', 'QuestionController');
-    Route::resource('users', 'UserController');
+    Route::resource('student', 'StudentController');
+    Route::resource('payment', 'PaymentController');
+    Route::resource('question', 'QuestionController');
+    Route::resource('user', 'UserController');
 
   });
 });
