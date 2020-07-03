@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\MasterModel;
 
-class Religion extends Model
+class Religion extends MasterModel
 {
-    //
+    public function student()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

@@ -2,9 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\MasterModel;
 
-class StudentResult extends Model
+class StudentResult extends MasterModel
 {
-    //
+    protected $table= 'student_results';
+    protected $gruarderd= ['id'];
+
+    protected $fillable = [
+        'student_id',
+        'question_detail_id',
+        'answer',
+        'correct_answer',
+        'score',
+    ];
 }

@@ -2,9 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\MasterModel;
 
-class Payment extends Model
+class Payment extends MasterModel
 {
-    //
+    protected $table= 'payments';
+    protected $gruarderd= ['id'];
+
+    protected $fillable = [
+        'student_id',
+        'payment',
+        'description',
+        'status',
+        'image',
+    ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

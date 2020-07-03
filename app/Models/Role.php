@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\MasterModel;
 
-class Role extends Model
+class Role extends MasterModel
 {
     protected $table= 'roles';
     protected $gruarderd= ['id'];

@@ -2,9 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\MasterModel;
 
-class Question extends Model
+class Question extends MasterModel
 {
-    //
+    protected $table= 'questions';
+    protected $gruarderd= ['id'];
+
+    protected $fillable = [
+        'name',
+        'type',
+        'total_question',
+    ];
+
+    public function questiondetail()
+    {
+        return $this->hasMany(QuestionDetail::class);
+    }
+
 }
