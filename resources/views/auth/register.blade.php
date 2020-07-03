@@ -73,12 +73,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group text-left">
-                                                        <label for="level">Level</label>
+                                                        <label for="level">Package</label>
                                                         <select id="level" class="form-control" name="level" required>
-                                                          <option value="beginner">Beginner</option>
-                                                          <option value="basic">Basic</option>
-                                                          <option value="intermediate">Intermediate</option>
-                                                          <option value="advanced">Advanced</option>
+                                                          <option value="beginner">Beginner Rp.120.000</option>
+                                                          <option value="basic">Basic Rp.420.000</option>
+                                                          <option value="intermediate">Intermediate Rp.620.000</option>
+                                                          <option value="advanced">Advanced Intermediate Rp.1.120.000<</option>
                                                         </select>
                                                     </div>
                                                 </div>
