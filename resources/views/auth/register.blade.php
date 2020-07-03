@@ -9,6 +9,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
                     <div class="bradcam_text text-center">
                         <div class="row d-flex justify-content-center">
                             <div class="col-10">

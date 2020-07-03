@@ -36,11 +36,11 @@ class RegisterStudentController extends Controller
         }
 
         //create and find id
-        $lastid = Student::create($request->all())->id;
+        $student_id = Student::create($request->all())->id;
 
         User::create([
             'role_id'      => 2,
-            'student_id'  => $lastid,
+            'student_id'  => $student_id,
             'username'     => '',
             'email'        => $email,
             'password'     => Hash::make($password),
@@ -48,7 +48,7 @@ class RegisterStudentController extends Controller
 
         $details = [
             'firstname'=>$request->firstname,
-            'email'=>$request->email,
+            'email'=>$email,
             'password'=>$password,
             'payment'=>$payment,
             'level'=>$request->level,
@@ -57,6 +57,6 @@ class RegisterStudentController extends Controller
 
         \Mail::to($email)->send(new WelcomeMail($details));
 
-        return redirect('/')->with('success', 'Data telah terkirim');
+        return redirect('/register')->with('success', 'Congratulation, Please check your email for next information');
     }
 }
