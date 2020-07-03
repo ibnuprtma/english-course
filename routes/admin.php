@@ -4,13 +4,17 @@
 Route::name('admin.')->group(function () {
   Route::group([
 
-    'namespace'     => 'admin',
+    'namespace'     => 'Admin',
     'prefix'        => 'admin',
     'middleware'    => ['auth','checkRole:admin'],
 
   ], function () {
 
-    
+    Route::resource('students', 'StudentController');
+    Route::resource('payments', 'PaymentController');
+    Route::resource('questions', 'QuestionController');
+    Route::resource('user', 'UserController');
+
   });
 });
 
