@@ -80,8 +80,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if($request->id != 1){
+            $users = User::findOrFail($request->id);
+            $users->delete();
+            return redirect()->route('admin.user.index')->with(['success' => 'Data has been delete']);
+        }else{
+            return redirect()->route('admin.user.index')->with(['error' => 'Data cannot delete with permission']);
+        }
     }
 }
