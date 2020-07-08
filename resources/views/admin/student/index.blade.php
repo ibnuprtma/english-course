@@ -20,7 +20,8 @@
                 <h3 class="mb-0">Students</h3>
                 </div>
                 <div class="col-4 text-right">
-                <a href="" class="btn btn-sm btn-primary">Add Student</a>
+                    <a data-toggle="modal" data-target="#modalCreate-student" class="btn btn-sm btn-primary text-white">Add Student</a>
+                    @include('admin.student.modal.create')
                 </div>
             </div>
             </div>
@@ -54,9 +55,29 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" data-toggle="modal" 
+                                            data-id="{{$student->id}}" 
+                                            data-firstname="{{$student->firstname}}" 
+                                            data-lastname="{{$student->lastname}}" 
+                                            data-gender="{{$student->gender}}" 
+                                            data-phone="{{$student->phone}}"
+                                            @if(isset($student->users->email))
+                                                data-email="{{$student->users->email}}"
+                                            @else 
+                                                data-email="-"
+                                            @endif 
+                                            data-address="{{$student->address}}" 
+                                            data-level="{{$student->level}}" 
+                                            data-religion="{{$student->religion->name}}" 
+                                            data-birthdate="{{$student->birthdate}}" 
+                                            data-target="#modalView-student">
+                                            View Detail
+                                        </a>
                                         <a class="dropdown-item" href="{{ route('admin.student.edit',[$student->id])}}">Edit</a>
                                         <a class="dropdown-item" data-toggle="modal" data-id="{{$student->id}}" data-target="#modalDelete-student">Delete</a>
                                     </div>
+
+                                    @include('admin.student.modal.detail')
                                 </div>
                             </td>
                             <div class="modal fade" id="modalDelete-student" tabindex="-1" role="dialog" aria-labelledby="modalDelete-student" aria-hidden="true">
@@ -87,7 +108,6 @@
                                             </form>
                                             <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button> 
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -121,6 +141,35 @@
                 $('#student_table').DataTable({
                     "scrollY": 450,
                     "scrollX": true
+                });
+
+                $('#modalView-student').on('show.bs.modal', function (event){
+                    
+                    var button = $(event.relatedTarget);
+
+                    var firstname = button.data('firstname');
+                    var lastname = button.data('lastname');
+                    var gender = button.data('gender');
+                    var phone = button.data('phone');
+                    var address = button.data('address');
+                    var email = button.data('email');
+                    var religion = button.data('religion');
+                    var birthdate = button.data('birthdate');
+                    var level = button.data('level');
+
+                    var modal = $(this);
+
+                    modal.find('.modal-body #firstname').val(firstname);
+                    modal.find('.modal-body #lastname').val(lastname);
+                    modal.find('.modal-body #gender').val(gender);
+                    modal.find('.modal-body #phone').val(phone);
+                    modal.find('.modal-body #address').val(address);
+                    modal.find('.modal-body #email').val(email);
+                    modal.find('.modal-body #religion').val(religion);
+                    modal.find('.modal-body #date').val(birthdate);
+                    modal.find('.modal-body #level').val(level);
+
+
                 });
             }
         };
