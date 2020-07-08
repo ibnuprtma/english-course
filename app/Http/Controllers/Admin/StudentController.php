@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -80,8 +81,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $students = Student::findOrFail($request->id);
+        $users = User::where('student_id',$request->id);
+        $users->delete();
+        $students->delete();
+        return redirect()->route('admin.student.index')->with(['success' => 'Data has been delete']);
     }
 }

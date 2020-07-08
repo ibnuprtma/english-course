@@ -4,6 +4,13 @@
 @endsection
 
 @section('content-body')
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>{{ $message }}</strong>
+</div>
+@endif
 <div class="row">
     <div class="col-xl-12 col-md-12 col-sm-12 order-xl-1">
         <div class="card bg-secondary shadow">
@@ -19,47 +26,40 @@
             </div>
             <div class="card-body">
             <div class="table-responsive">
-                {{-- <table id="supplier_table" class="table table-striped table-bordered second" style="width:100%">
+                <table id="student_table" class="table table-striped table-bordered second" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Code</th>
+                            <th>No</th>
                             <th>Full Name</th>
-                            <th>Company</th>
+                            <th>Gender</th>
                             <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Country</th>
-                            <th>City</th>
-                            <th>Postal Code</th>
                             <th>Address</th>
-                            <th>Note</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($suppliers as $supplier)
+                        @php
+                          $i = 1;  
+                        @endphp
+                        @foreach ($students as $student)
                         <tr>
-                            <td>{{ $supplier->code }}</td>
-                            <td>{{ $supplier->firstname }} {{$supplier->lastname}}</td>
-                            <td>{{ $supplier->company }}</td>
-                            <td>{{ $supplier->phone }}</td>
-                            <td>{{ $supplier->email }}</td>
-                            <td>{{ $supplier->country }}</td>
-                            <td>{{ $supplier->city }}</td>
-                            <td>{{ $supplier->postalcode }}</td>
-                            <td>{{ $supplier->address }}</td>
-                            <td>{{ $supplier->note }}</td>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $student->firstname }} {{$student->lastname}}</td>
+                            <td>{{ $student->gender }}</td>
+                            <td>{{ $student->phone }}</td>
+                            <td>{{ $student->address }}</td>
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{ route('frontend.supplier.edit',[$supplier->id])}}">Edit</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-id="{{$supplier->id}}" data-target="#modalDelete-supplier">Delete</a>
+                                        <a class="dropdown-item" href="{{ route('admin.student.edit',[$student->id])}}">Edit</a>
+                                        <a class="dropdown-item" data-toggle="modal" data-id="{{$student->id}}" data-target="#modalDelete-student">Delete</a>
                                     </div>
                                 </div>
                             </td>
-                            <div class="modal fade" id="modalDelete-supplier" tabindex="-1" role="dialog" aria-labelledby="modalDelete-supplier" aria-hidden="true">
+                            <div class="modal fade" id="modalDelete-student" tabindex="-1" role="dialog" aria-labelledby="modalDelete-student" aria-hidden="true">
                                 <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                                     <div class="modal-content bg-gradient-danger">
                                         
@@ -79,7 +79,7 @@
                                         </div>
                                         
                                         <div class="modal-footer">
-                                            <form action="{{ route('frontend.supplier.destroy','delete')}}" method="POST">
+                                            <form action="{{ route('admin.student.destroy','delete')}}" method="POST">
                                                 <input type="hidden" name="_method" value="Delete">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="hidden" name="id" id="id">
@@ -94,10 +94,39 @@
                         </tr> 
                         @endforeach
                     </tbody>
-                </table> --}}
+                </table>
             </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+
+@push('footer-scripts')
+    <script type="text/javascript">
+        let Student = {
+            init: function () {
+                $('#modalDelete-student').on('show.bs.modal', function (event){
+                    
+                    var button = $(event.relatedTarget);
+                    var id = button.data('id');
+
+                    var modal = $(this);
+
+                    modal.find('.modal-footer #id').val(id);
+
+                });
+
+                $('#student_table').DataTable({
+                    "scrollY": 450,
+                    "scrollX": true
+                });
+            }
+        };
+
+        jQuery(document).ready(function () {
+            Student.init();
+        });
+    </script>
+@endpush
