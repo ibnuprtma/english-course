@@ -80,8 +80,10 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $payments = Payment::findOrFail($request->id);
+        $payments->delete();
+        return redirect()->route('admin.payment.index')->with(['success' => 'Data has been delete']);
     }
 }
