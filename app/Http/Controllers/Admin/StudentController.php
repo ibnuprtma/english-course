@@ -117,9 +117,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $students = Student::findOrFail($request->id);
+        $students->update($request->all());
+        return redirect('/admin/student')->with('success','Data has been update');
     }
 
     /**
