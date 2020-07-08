@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\WelcomeMail;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Mail;
 
 class RegisterStudentController extends Controller
@@ -26,13 +27,13 @@ class RegisterStudentController extends Controller
         $payment = "BCA 123123123123 A.N Ibnu Pratama";
 
         if($request->level == "beginner"){
-            $price = "120.000";
+            $price = 120.000;
         }elseif($request->level == "basic"){
-            $price = "420.000";
+            $price = 420.000;
         }elseif($request->level == "intermediate"){
-            $price = "620.000";
+            $price = 620.000;
         }elseif($request->level == "advanced"){
-            $price = "1.120.000";
+            $price = 1120.000;
         }
 
         //create and find id
@@ -44,6 +45,14 @@ class RegisterStudentController extends Controller
             'username'     => '',
             'email'        => $email,
             'password'     => Hash::make($password),
+        ]);
+
+        Payment::create([
+            'student_id'  => $student_id,
+            'payment'     => $price."000",
+            'description' => '',
+            'status'     => 'Waiting',
+            'image'     => ''
         ]);
 
         $details = [
