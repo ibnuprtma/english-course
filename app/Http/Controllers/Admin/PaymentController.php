@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\PaymentMail;
 use App\Models\Payment;
+use App\User;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -70,8 +72,28 @@ class PaymentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        $email = User::where('student_id',$request->id)->get();
+        $payments = Payment::findOrFail($request->id);
+        $payments->update($request->all());
+
+        if($request->status=="Denied"){
+            $status ="Danied";
+            $details = [
+                'email'=>$email[0]->email,
+                'status'=>$status,
+            ];
+            \Mail::to($email[0]->email)->send(new PaymentMail($details));
+        }else if($request->status=="Paid"){
+            $status ="Paid";
+            $details = [
+                'email'=>$email[0]->email,
+                'status'=>$status,
+            ];
+            \Mail::to($email[0]->email)->send(new PaymentMail($details));
+        }
+
+        return redirect('/admin/payment')->with('success','Data has been update');
     }
 
     /**

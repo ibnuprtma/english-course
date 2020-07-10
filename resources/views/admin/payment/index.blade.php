@@ -62,7 +62,7 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{ route('admin.payment.edit',[$payment->id])}}">Edit</a>
+                                        <a class="dropdown-item" data-toggle="modal" data-id="{{$payment->id}}" data-target="#modalApprove-payment">Action</a>
                                         <a class="dropdown-item" data-toggle="modal" data-id="{{$payment->id}}" data-target="#modalDelete-payment">Delete</a>
                                     </div>
                                 </div>
@@ -99,6 +99,46 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal fade" id="modalApprove-payment" tabindex="-1" role="dialog" aria-labelledby="modalApprove-payment" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-" role="document">
+                                    <div class="modal-content">
+                                        <form action="{{ route('admin.payment.update','update')}}" method="POST">
+                                            {{csrf_field()}}
+                                            {{ method_field('PUT')}}  
+                                            <input type="hidden" id="id" name="id">
+                                            <div class="modal-header">
+                                                <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="py-3 text-center">
+                                                    <i class="ni ni-bell-55 ni-3x"></i>
+                                                    <h4 class="heading mt-4">You should read this!</h4>
+                                                    <p>Are You Sure to change the status ?</p>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <select id="status" class="form-control" name="status">
+                                                                    <option value="Waiting">Waiting</option>
+                                                                    <option value="Pending">Pending</option>
+                                                                    <option value="Denied">Denied</option>
+                                                                    <option value="Paid">Paid</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-primary" value="Ok, Got it">
+                                                <button type="button" class="btn btn-danger btn-link text-black ml-auto" data-dismiss="modal">Close</button> 
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </tr> 
                         @endforeach
                     </tbody>
@@ -128,6 +168,17 @@
                 $('#payment_table').DataTable({
                     "scrollY": 450,
                     "scrollX": true
+                });
+
+                $('#modalApprove-payment').on('show.bs.modal', function (event){
+                    
+                    var button = $(event.relatedTarget);
+                    var id = button.data('id');
+
+                    var modal = $(this);
+
+                    modal.find('.modal-content #id').val(id);
+
                 });
             }
         };
