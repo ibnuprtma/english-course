@@ -62,9 +62,22 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{ route('admin.user.edit',[$user->id])}}">Edit</a>
+                                        <a class="dropdown-item" data-toggle="modal" 
+                                            data-id="{{$user->id}}"
+                                            data-username="{{$user->username}}" 
+                                            data-role="{{$user->role_id}}" 
+                                            data-email="{{$user->email}}" 
+                                            data-target="#modalEdit-user">Edit
+                                        </a>
+                                        <a class="dropdown-item" data-toggle="modal" 
+                                            data-id="{{$user->id}}"
+                                            data-password="{{$user->password}}"
+                                            data-target="#modalEditPassword-user">Edit Password
+                                        </a>
                                         <a class="dropdown-item" data-toggle="modal" data-id="{{$user->id}}" data-target="#modalDelete-user">Delete</a>
                                     </div>
+                                    @include('admin.user.modal.edit')
+                                    @include('admin.user.modal.edit-password')
                                 </div>
                             </td>
                             <div class="modal fade" id="modalDelete-user" tabindex="-1" role="dialog" aria-labelledby="modalDelete-user" aria-hidden="true">
@@ -129,6 +142,36 @@
                 $('#user_table').DataTable({
                     "scrollY": 450,
                     "scrollX": true
+                });
+
+                $('#modalEdit-user').on('show.bs.modal', function (event){
+                    
+                    var button = $(event.relatedTarget);
+
+                    var id = button.data('id');
+                    var username = button.data('username');
+                    var email = button.data('email');
+                    var role = button.data('role');
+
+                    var modal = $(this);
+
+                    modal.find('.modal-body #id').val(id);
+                    modal.find('.modal-body #username').val(username);
+                    modal.find('.modal-body #email').val(email);
+                    modal.find('.modal-body #role_id').val(role);
+                });
+
+                $('#modalEditPassword-user').on('show.bs.modal', function (event){
+                    
+                    var button = $(event.relatedTarget);
+
+                    var id = button.data('id');
+                    var password = button.data('password');
+
+                    var modal = $(this);
+
+                    modal.find('.modal-body #id').val(id);
+                    modal.find('.modal-body #old_password').val(password);
                 });
             }
         };

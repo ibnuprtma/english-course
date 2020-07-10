@@ -71,7 +71,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($request->id);
+        $user->update($request->all());
+        return redirect('/admin/user')->with('success','Data has been update');
     }
 
     /**
@@ -88,6 +90,19 @@ class UserController extends Controller
             return redirect()->route('admin.user.index')->with(['success' => 'Data has been delete']);
         }else{
             return redirect()->route('admin.user.index')->with(['error' => 'Data cannot delete with permission']);
+        }
+    }
+
+    public function changepassword(Request $request)
+    {
+        dd($request->id);
+        $pass = User::select('password')->where('id', $request->id)->first()->password;
+
+        if (Hash::check($request->old_password, $pass)) {
+            User::where('id', $request->id)->update(array('password' => Hash::make($request->password)));
+            return redirect('/admin/user')->with('success','Data has been update');
+        } else {
+            return redirect('/admin/user')->with('failed','Data cannot update password');
         }
     }
 }

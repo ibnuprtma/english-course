@@ -15,6 +15,8 @@ Route::name('admin.')->group(function () {
     Route::resource('question', 'QuestionController');
     Route::resource('user', 'UserController');
 
+    Route::put( '/user/change-password', 'UserController@changepassword' )->name('user.change-password');
+
   });
 });
 
