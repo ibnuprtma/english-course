@@ -13,9 +13,12 @@ Route::name('admin.')->group(function () {
     Route::resource('student', 'StudentController');
     Route::resource('payment', 'PaymentController');
     Route::resource('question', 'QuestionController');
-    Route::resource('user', 'UserController');
 
-    Route::put( '/user/change-password/{id}', 'UserController@changepassword' )->name('user.change-password');
+    Route::resource('user', 'UserController');
+    Route::prefix('user')->group(function () {  
+      Route::put( '/change-password/{id}', 'UserController@changepassword' )->name('user.change-password');
+    });
+
 
   });
 });
