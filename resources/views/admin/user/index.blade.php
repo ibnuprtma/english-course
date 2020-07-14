@@ -166,12 +166,10 @@
                     var button = $(event.relatedTarget);
 
                     var id = button.data('id');
-                    var password = button.data('password');
 
                     var modal = $(this);
 
                     modal.find('.modal-body #id').val(id);
-                    modal.find('.modal-body #old_password').val(password);
                 });
             }
         };
