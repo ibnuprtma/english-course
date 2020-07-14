@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -95,14 +96,13 @@ class UserController extends Controller
 
     public function changepassword(Request $request)
     {
-        dd($request->id);
         $pass = User::select('password')->where('id', $request->id)->first()->password;
 
         if (Hash::check($request->old_password, $pass)) {
             User::where('id', $request->id)->update(array('password' => Hash::make($request->password)));
             return redirect('/admin/user')->with('success','Data has been update');
         } else {
-            return redirect('/admin/user')->with('failed','Data cannot update password');
+            return redirect('/admin/user')->with('error','Data cannot update password');
         }
     }
 }

@@ -10,7 +10,7 @@
                         <div class="text-center text-muted mb-4">
                             <small>Please fill the box with the name of student</small>
                         </div>
-                        <form action="{{ route('admin.user.change-password')}}" method="POST">
+                        <form action="{{ route('admin.user.change-password','update')}}" method="POST">
                             {{csrf_field()}}
                             {{ method_field('PUT')}}  
                             <input type="hidden" id="id" name="id">
