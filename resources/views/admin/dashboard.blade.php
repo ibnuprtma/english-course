@@ -174,10 +174,13 @@
             </div>
         </div>
     </div>
+@else
+    <h4 class="alert-heading p-4 alert-success text-center">Selamat Datang, {{Auth::user()->student->firstname}} {{Auth::user()->student->lastname}}</h4>
 @endif
 @endsection
 
 @section('content-body')
+@if(Auth::user()->role->name == "admin")
     {{-- <div class="row">
         <div class="col-xl-8 mb-5 mb-xl-0">
             <div class="card bg-gradient-default shadow">
@@ -292,4 +295,5 @@
             </div>
         </div>
     </div>
+@endif
 @endsection

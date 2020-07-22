@@ -156,14 +156,6 @@
 
             <!-- Divider -->
             <hr class="my-3">
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-single-copy-04 text-primary"></i> Reports
-                    </a>
-                </li>
-            </ul>
 
         </div>
     </div>
