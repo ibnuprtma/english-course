@@ -33,7 +33,7 @@
                             </div>
                         @else
                             <div class="Appointment">
-                                <div class="book_btn d-none d-lg-block">
+                                <div class="main-menu book_btn d-none d-lg-block">
                                     <a  href="/register">Register</a>
                                     <a  href="/login" style="background:#ff008c;color:white">Login</a>
                                 </div>

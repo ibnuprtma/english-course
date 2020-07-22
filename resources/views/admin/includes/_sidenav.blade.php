@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="/dashboard">
+        <a class="navbar-brand pt-0" href="/admin">
             <h1 class="text-primary font-weight-bold">English Course</h1>
         </a>
         <!-- User -->
