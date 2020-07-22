@@ -4,100 +4,81 @@
 @endsection
 
 @section('content-body')
-<div class="row">
-    <div class="col-xl-12 col-md-12 col-sm-12 order-xl-1">
-        <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
-            <div class="row align-items-center">
-                <div class="col-8">
-                <h3 class="mb-0">Questions</h3>
+
+<div class="alert alert-secondary" role="alert">
+    <h4 class="alert-heading">HI, {{Auth::user()->student->firstname}}</h4>
+    @if($payment->status == "Waiting" || $payment->status == "Danied" || $payment->status == "Pending")
+        @if($payment->status == "Danied")
+        <h4 class="alert-heading p-4 alert-danger text-center">Status anda tidak diterima oleh admin, silahkan cek pembayaran anda atau anda bisa menghubungi kami. Terimakasih</h4>
+        @elseif($payment->status == "Pending")
+        <p class="alert-heading p-4 alert-danger text-center">Terimakasih sudah melakukan pembayaran, Harap menunggu konfirmasi dari bagian administrasi
+        <br>Anda akan segera mendapatkan email balasan maksimal 2 x 24 jam</p>
+        @endif
+        <p>Silahkan melakukan pembayaran pendaftaran ke :</p>
+        <hr>
+        <h5 class="alert-heading">
+            Jenis Bank : BCA <br>
+            No. Rekening : 123123123123 A.N Ibnu Pratama <br>
+            Nominal : Rp @if(isset($payment->payment)) {{$payment->payment}} @endif
+        </h5>
+        <hr>
+        <h4 class="alert-heading mb-0">INGAT! Nominal harus sesuai dengan yang disebutkan diatas. Jika tidak, maka data tidak akan diproses.</h4>
+        <p class="mb-0">
+            Setelah melakukan pembayaran, upload bukti pembayaran dan mohon menunggu verifikasi oleh bagian administrasi maksimal 2 x 24 jam.
+            <br> Contact Person : Imam Mahudi - <span><a target="_blank" href="https://wa.me/6281336532601">081336532601 (WA)</a></span>
+        </p>
+    @elseif($payment->status == "Paid")
+        <h4 class="alert-heading p-4 alert-success text-center">Selamat pembayaran anda diterima oleh admin dan anda bisa melanjutkan ke tahap selanjutnya</h4>
+    @endif
+</div>
+
+<div class="card">
+    <div class="card-body">
+        @if($payment->status == "Waiting")
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="pembayaran">Upload Bukti Pembayaran</label>
+                        <input type="file" class="form-control-file" name="evidence">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control form-control-alternative" rows="3" name="description" placeholder="Keterangan"></textarea>
+                    </div>
                 </div>
-                <div class="col-4 text-right">
-                <a href="" class="btn btn-sm btn-primary">Add Question</a>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
+        </form>
+        @endif
+
+        @if($payment->status != "Waiting")
+        <div class="row">
+            <div class="col-4">
+                <b>Bukti</b><br><br>
+                <img src="/uploads/payment/{{ $payment->image }}" alt="" srcset="" width="100%">
             </div>
-            <div class="card-body">
-            <div class="table-responsive">
-                {{-- <table id="supplier_table" class="table table-striped table-bordered second" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Code</th>
-                            <th>Full Name</th>
-                            <th>Company</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Country</th>
-                            <th>City</th>
-                            <th>Postal Code</th>
-                            <th>Address</th>
-                            <th>Note</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($suppliers as $supplier)
-                        <tr>
-                            <td>{{ $supplier->code }}</td>
-                            <td>{{ $supplier->firstname }} {{$supplier->lastname}}</td>
-                            <td>{{ $supplier->company }}</td>
-                            <td>{{ $supplier->phone }}</td>
-                            <td>{{ $supplier->email }}</td>
-                            <td>{{ $supplier->country }}</td>
-                            <td>{{ $supplier->city }}</td>
-                            <td>{{ $supplier->postalcode }}</td>
-                            <td>{{ $supplier->address }}</td>
-                            <td>{{ $supplier->note }}</td>
-                            <td class="text-right">
-                                <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="{{ route('frontend.supplier.edit',[$supplier->id])}}">Edit</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-id="{{$supplier->id}}" data-target="#modalDelete-supplier">Delete</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <div class="modal fade" id="modalDelete-supplier" tabindex="-1" role="dialog" aria-labelledby="modalDelete-supplier" aria-hidden="true">
-                                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                                    <div class="modal-content bg-gradient-danger">
-                                        
-                                        <div class="modal-header">
-                                            <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                        </div>
-                                        
-                                        <div class="modal-body">
-                                            <div class="py-3 text-center">
-                                                <i class="ni ni-bell-55 ni-3x"></i>
-                                                <h4 class="heading mt-4">You should read this!</h4>
-                                                <p>when you delete your data, you will get a lost your data</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="modal-footer">
-                                            <form action="{{ route('frontend.supplier.destroy','delete')}}" method="POST">
-                                                <input type="hidden" name="_method" value="Delete">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <input type="hidden" name="id" id="id">
-                                                <input type="submit" class="btn btn-white" value="Ok, Got it">
-                                            </form>
-                                            <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button> 
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </tr> 
-                        @endforeach
-                    </tbody>
-                </table> --}}
+            <div class="col-4">
+                <b>Status Pembayaran</b><br><br>
+                @if($payment->status == 'Pending')
+                <button type="button" class="btn btn-danger btn-sm">Pending</button>
+                @elseif($payment->status == 'Danied')
+                <button type="button" class="btn btn-danger btn-sm">Danied</button>
+                @elseif($payment->status == 'Paid')
+                <button type="button" class="btn btn-success btn-sm">Success</button>
+                @endif
             </div>
+            <div class="col-4">
+                <b>Waktu Submit</b><br><br>
+                {{ $payment->created_at }}
             </div>
         </div>
+        @endif
+
     </div>
 </div>
+
+
 @endsection

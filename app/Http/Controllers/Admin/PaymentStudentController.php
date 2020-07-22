@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentStudentController extends Controller
 {
@@ -14,7 +16,10 @@ class PaymentStudentController extends Controller
      */
     public function index()
     {
-        return view('admin.payment-individual.index');
+        $payment = Payment::all()->where('student_id', Auth::user()->student_id)->first();    
+        return view('admin.payment-individual.index', [
+            'payment' => $payment
+        ]);
     }
 
     /**
