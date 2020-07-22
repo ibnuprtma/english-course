@@ -36,6 +36,9 @@ Route::name('admin.')->group(function () {
 
     Route::prefix('students')->group(function () {  
         Route::resource('profil', 'ProfilStudentController');
+        Route::prefix('profil')->group(function () {  
+          Route::put( '/student-password/{id}', 'ProfilStudentController@studentpassword' )->name('profil.student-password');
+        });
         Route::resource('payment-individual', 'PaymentStudentController');
         Route::resource('test', 'TestStudentController');
     });
