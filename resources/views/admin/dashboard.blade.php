@@ -1,14 +1,15 @@
 @extends('admin.master')
 
 @section('content-head')
+@if(Auth::user()->role->name == "admin")
     <div class="row">
         <div class="col-xl-3 col-lg-6">
             <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
                 <div class="row">
                 <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                    <span class="h2 font-weight-bold mb-0">350,897</span>
+                    <h5 class="card-title text-uppercase text-muted mb-0">Paid</h5>
+                    <span class="h2 font-weight-bold mb-0">Rp.{{$paid}}</span>
                 </div>
                 <div class="col-auto">
                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -18,7 +19,7 @@
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap">Since last month</span>
+                <span class="text-nowrap">Total</span>
                 </p>
             </div>
             </div>
@@ -28,8 +29,8 @@
             <div class="card-body">
                 <div class="row">
                 <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                    <h5 class="card-title text-uppercase text-muted mb-0">Denied</h5>
+                    <span class="h2 font-weight-bold mb-0">Rp.{{$denied}}</span>
                 </div>
                 <div class="col-auto">
                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -39,7 +40,7 @@
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
+                <span class="text-nowrap">Total</span>
                 </p>
             </div>
             </div>
@@ -49,8 +50,8 @@
             <div class="card-body">
                 <div class="row">
                 <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                    <span class="h2 font-weight-bold mb-0">924</span>
+                    <h5 class="card-title text-uppercase text-muted mb-0">Pending</h5>
+                    <span class="h2 font-weight-bold mb-0">Rp.{{$pending}}</span>
                 </div>
                 <div class="col-auto">
                     <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -60,7 +61,7 @@
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
+                <span class="text-nowrap">Total</span>
                 </p>
             </div>
             </div>
@@ -70,8 +71,8 @@
             <div class="card-body">
                 <div class="row">
                 <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                    <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    <h5 class="card-title text-uppercase text-muted mb-0">Waiting</h5>
+                    <span class="h2 font-weight-bold mb-0">Rp.{{$waiting}}</span>
                 </div>
                 <div class="col-auto">
                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -81,16 +82,103 @@
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm">
                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                <span class="text-nowrap">Since last month</span>
+                <span class="text-nowrap">Total</span>
                 </p>
             </div>
             </div>
         </div>
     </div>
+    <div class="row mt-5">
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Intermediate</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$student_level_intermediate}}</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-chart-bar"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Total</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Basic</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$student_level_basic}}</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                <span class="text-nowrap">Total</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Beginner</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$student_level_beginner}}</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                <span class="text-nowrap">Total</span>
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Advanced</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$student_level_advanced}}</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                    <i class="fas fa-percent"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                <span class="text-nowrap">Total</span>
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+@endif
 @endsection
 
 @section('content-body')
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-xl-8 mb-5 mb-xl-0">
             <div class="card bg-gradient-default shadow">
             <div class="card-header bg-transparent">
@@ -144,17 +232,17 @@
             </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="row mt-5">
         <div class="col-xl-8 mb-5 mb-xl-0">
             <div class="card shadow">
             <div class="card-header border-0">
                 <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="mb-0">Page visits</h3>
+                    <h3 class="mb-0">Student</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                    <a href="/admin/student" class="btn btn-sm btn-primary">See all</a>
                 </div>
                 </div>
             </div>
@@ -163,83 +251,21 @@
                 <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                     <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">
-                        /argon/
-                    </th>
-                    <td>
-                        4,569
-                    </td>
-                    <td>
-                        340
-                    </td>
-                    <td>
-                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        /argon/index.html
-                    </th>
-                    <td>
-                        3,985
-                    </td>
-                    <td>
-                        319
-                    </td>
-                    <td>
-                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        /argon/charts.html
-                    </th>
-                    <td>
-                        3,513
-                    </td>
-                    <td>
-                        294
-                    </td>
-                    <td>
-                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        /argon/tables.html
-                    </th>
-                    <td>
-                        2,050
-                    </td>
-                    <td>
-                        147
-                    </td>
-                    <td>
-                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        /argon/profile.html
-                    </th>
-                    <td>
-                        1,795
-                    </td>
-                    <td>
-                        190
-                    </td>
-                    <td>
-                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                    </td>
-                    </tr>
+                    @foreach ($students as $student)
+                        <tr>
+                            <td>{{ $student->firstname }} {{$student->lastname}}</td>
+                            <td>{{ $student->gender }}</td>
+                            <td>{{ $student->phone }}</td>
+                            <td>{{ $student->address }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
                 </table>
             </div>
@@ -247,120 +273,22 @@
         </div>
         <div class="col-xl-4">
             <div class="card shadow">
-            <div class="card-header border-0">
-                <div class="row align-items-center">
-                <div class="col">
-                    <h3 class="mb-0">Social traffic</h3>
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">Total Students</h3>
+                    </div>
+                    <div class="col text-right">
+                        <a href="#!" class="btn btn-sm btn-primary"></a>
+                    </div>
+                    </div>
                 </div>
-                <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                <div class="p-auto m-auto">
+                    <div class="p-5 m-5">
+                        <h1 class="mb-0 text-center">{{$total_student}}</h1>
+                        <br> <span>of Total Student</span>
+                    </div>
                 </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <!-- Projects table -->
-                <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                    <tr>
-                    <th scope="col">Referral</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">
-                        Facebook
-                    </th>
-                    <td>
-                        1,480
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                        <span class="mr-2">60%</span>
-                        <div>
-                            <div class="progress">
-                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        Facebook
-                    </th>
-                    <td>
-                        5,480
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                        <span class="mr-2">70%</span>
-                        <div>
-                            <div class="progress">
-                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        Google
-                    </th>
-                    <td>
-                        4,807
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                        <span class="mr-2">80%</span>
-                        <div>
-                            <div class="progress">
-                            <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        Instagram
-                    </th>
-                    <td>
-                        3,678
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                        <span class="mr-2">75%</span>
-                        <div>
-                            <div class="progress">
-                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">
-                        twitter
-                    </th>
-                    <td>
-                        2,645
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                        <span class="mr-2">30%</span>
-                        <div>
-                            <div class="progress">
-                            <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-                </tbody>
-                </table>
-            </div>
             </div>
         </div>
     </div>

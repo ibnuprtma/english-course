@@ -49,13 +49,13 @@ Route::name('admin.')->group(function () {
 Route::name('admin.')->group(function () {
   Route::group([
 
-    'namespace'     => 'admin',
+    'namespace'     => 'Admin',
     'prefix'        => 'admin',
     'middleware'    => ['auth','checkRole:student,admin'],
 
   ], function () {
 
-    Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
     
   });
 });
