@@ -132,17 +132,17 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('profil*') ? 'active' : '' }}" href="{{ route('admin.profil.index')}}">
                             <i class="ni ni-badge text-pink"></i> Profil
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('payment-individual*') ? 'active' : '' }}" href="{{ route('admin.payment-individual.index')}}">
                             <i class="ni ni-bullet-list-67 text-green"></i>Pembayaran
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ request()->is('test*') ? 'active' : '' }}" href="{{ route('admin.test.index')}}">
                             <i class="ni ni-spaceship text-primary"></i> Test
                         </a>
                     </li>
@@ -151,40 +151,6 @@
                             <i class="ni ni-circle-08 text-red"></i> Hasil Test
                         </a>
                     </li>
-                    {{-- @if(Auth::user()->role->name == "Siswa")
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('employee*') ? 'active' : '' }}" href="{{ route('frontend.employee.index')}}">
-                            <i class="ni ni-badge text-pink"></i> Employees
-                        </a>
-                    </li>
-                    @endif
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('customer*') ? 'active' : '' }}" href="{{ route('frontend.customer.index')}}">
-                            <i class="ni ni-spaceship text-red"></i> Customers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('supplier*') ? 'active' : '' }}" href="{{ route('frontend.supplier.index')}}">
-                            <i class="ni ni-badge text-green"></i> Suppliers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('product*') ? 'active' : '' }}" href="{{ route('frontend.product.index')}}">
-                            <i class="ni ni-app text-red"></i> Products
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('service*') ? 'active' : '' }}" href="{{ route('frontend.service.index')}}">
-                            <i class="ni ni-briefcase-24 text-yellow"></i> Services
-                        </a>
-                    </li>
-                    @if(Auth::user()->role->name == "Admin")
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('frontend.user.index')}}">
-                            <i class="ni ni-circle-08 text-green"></i> Users
-                        </a>
-                    </li>
-                    @endif --}}
                 </ul>
             @endif
 

@@ -27,12 +27,18 @@ Route::name('admin.')->group(function () {
 Route::name('admin.')->group(function () {
   Route::group([
 
-    'namespace'     => 'admin',
+    'namespace'     => 'Admin',
     'prefix'        => 'admin',
     'middleware'    => ['auth','checkRole:student'],
 
   ], function () {
 
+
+    Route::prefix('students')->group(function () {  
+        Route::resource('profil', 'ProfilStudentController');
+        Route::resource('payment-individual', 'PaymentStudentController');
+        Route::resource('test', 'TestStudentController');
+    });
     
   });
 });
