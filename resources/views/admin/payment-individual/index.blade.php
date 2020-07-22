@@ -7,8 +7,8 @@
 
 <div class="alert alert-secondary" role="alert">
     <h4 class="alert-heading">HI, {{Auth::user()->student->firstname}}</h4>
-    @if($payment->status == "Waiting" || $payment->status == "Danied" || $payment->status == "Pending")
-        @if($payment->status == "Danied")
+    @if($payment->status == "Waiting" || $payment->status == "Denied" || $payment->status == "Pending")
+        @if($payment->status == "Denied")
         <h4 class="alert-heading p-4 alert-danger text-center">Status anda tidak diterima oleh admin, silahkan cek pembayaran anda atau anda bisa menghubungi kami. Terimakasih</h4>
         @elseif($payment->status == "Pending")
         <p class="alert-heading p-4 alert-danger text-center">Terimakasih sudah melakukan pembayaran, Harap menunggu konfirmasi dari bagian administrasi
@@ -65,8 +65,8 @@
                 <b>Status Pembayaran</b><br><br>
                 @if($payment->status == 'Pending')
                 <button type="button" class="btn btn-danger btn-sm">Pending</button>
-                @elseif($payment->status == 'Danied')
-                <button type="button" class="btn btn-danger btn-sm">Danied</button>
+                @elseif($payment->status == 'Denied')
+                <button type="button" class="btn btn-danger btn-sm">Denied</button>
                 @elseif($payment->status == 'Paid')
                 <button type="button" class="btn btn-success btn-sm">Success</button>
                 @endif

@@ -78,7 +78,7 @@ class PaymentController extends Controller
         $payments->update($request->all());
 
         if($request->status=="Denied"){
-            $status ="Danied";
+            $status ="Denied";
             $details = [
                 'email'=>$email[0]->email,
                 'status'=>$status,

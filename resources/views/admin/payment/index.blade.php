@@ -53,8 +53,18 @@
                                     -
                                 @endif
                             </td>
-                            <td>{{ $payment->status }}</td>
-                            <td>{{ $payment->image }}</td>
+                            <td>   
+                                @if($payment->status == 'Pending')
+                                <button type="button" class="btn btn-danger btn-sm">Pending</button>
+                                @elseif($payment->status == 'Denied')
+                                <button type="button" class="btn btn-danger btn-sm">Denied</button>
+                                @elseif($payment->status == 'Paid')
+                                <button type="button" class="btn btn-success btn-sm">Success</button>
+                                @elseif($payment->status == 'Waiting')
+                                <button type="button" class="btn btn-primary btn-sm">Waiting</button>
+                                @endif
+                            </td>
+                            <td><img src="/uploads/payment/{{ $payment->image }}" alt="" srcset="" width="100%"></td>
                             <td>{{ $payment->created_at }}</td>
                             <td class="text-right">
                                 <div class="dropdown">
@@ -63,11 +73,11 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item" data-toggle="modal" data-id="{{$payment->id}}" data-target="#modalApprove-payment">Action</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-id="{{$payment->id}}" data-target="#modalDelete-payment">Delete</a>
+                                        {{-- <a class="dropdown-item" data-toggle="modal" data-id="{{$payment->id}}" data-target="#modalDelete-payment">Delete</a> --}}
                                     </div>
                                 </div>
                             </td>
-                            <div class="modal fade" id="modalDelete-payment" tabindex="-1" role="dialog" aria-labelledby="modalDelete-payment" aria-hidden="true">
+                            {{-- <div class="modal fade" id="modalDelete-payment" tabindex="-1" role="dialog" aria-labelledby="modalDelete-payment" aria-hidden="true">
                                 <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                                     <div class="modal-content bg-gradient-danger">
                                         
@@ -98,7 +108,7 @@
                                         
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="modal fade" id="modalApprove-payment" tabindex="-1" role="dialog" aria-labelledby="modalApprove-payment" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-" role="document">
                                     <div class="modal-content">
