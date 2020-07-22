@@ -35,13 +35,14 @@
 <div class="card">
     <div class="card-body">
         @if($payment->status == "Waiting")
-        <form action="" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
+        <form action="{{ route('admin.payment-individual.update', $payment->id)}}" method="POST" enctype="multipart/form-data">
+            {{csrf_field()}}
+            {{ method_field('PUT')}}  
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="pembayaran">Upload Bukti Pembayaran</label>
-                        <input type="file" class="form-control-file" name="evidence">
+                        <input type="file" class="form-control-file" name="image" required>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control form-control-alternative" rows="3" name="description" placeholder="Keterangan"></textarea>

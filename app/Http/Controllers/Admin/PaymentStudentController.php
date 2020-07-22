@@ -74,7 +74,14 @@ class PaymentStudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $image = $request->file('image');
+        $file_extension = $image->getClientOriginalExtension(); //** get filename extension
+        $fileName = Auth::user()->student->firstname . "-pembayaran-".mt_rand(1000, 999999)."-". date('l, d-m-Y  h:i:s a') ."." . $file_extension;
+        $image->move('uploads/payment', $fileName);
+
+        Payment::where('id', $id)->update(array('image' => $fileName,'description' => $request->description, 'status' => "Pending"));
+
+        return redirect()->route('admin.payment-individual.index')->with(['success' => 'Data has been upload']);
     }
 
     /**
