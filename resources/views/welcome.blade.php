@@ -21,8 +21,8 @@
                         <div class="slider_text text-center">
                             <div class="text">
                                 <h3>
-                                    BoostUp your Business & Get <br>
-                                        top of Search Engine
+                                    BoostUp your English Skill <br>
+                                    Be The Best for Yourself
                                 </h3>
 
                                 @if (Route::has('login'))
@@ -35,7 +35,7 @@
                                         @endif
                                     </a>
                                 @else
-                                    <a class="boxed-btn3" href="">Get Started</a>
+                                    <a class="boxed-btn3" href="/login">Get Started</a>
                                 @endauth
                                 @endif
                             </div>
@@ -59,9 +59,9 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/seo_1.svg')}}" alt="">
                         </div>
-                        <h3>SEO/SEM</h3>
+                        <h3>Grammer</h3>
                         <p>Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing.</p>
-                        <a href="#" class="boxed-btn3-text">Learn More</a>
+                        {{-- <a href="#" class="boxed-btn3-text">Learn More</a> --}}
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-4">
@@ -69,9 +69,9 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/seo_2.svg')}}" alt="">
                         </div>
-                        <h3>Digital Marketing</h3>
+                        <h3>Speaking</h3>
                         <p>Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing.</p>
-                        <a href="#" class="boxed-btn3-text">Learn More</a>
+                        {{-- <a href="#" class="boxed-btn3-text">Learn More</a> --}}
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-4">
@@ -79,9 +79,9 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/seo_3.svg')}}" alt="">
                         </div>
-                        <h3>Social Media</h3>
+                        <h3>Listening</h3>
                         <p>Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing.</p>
-                        <a href="#" class="boxed-btn3-text">Learn More</a>
+                        {{-- <a href="#" class="boxed-btn3-text">Learn More</a> --}}
                     </div>
                 </div>
             </div>
@@ -101,12 +101,12 @@
                 </div>
                 <div class="col-xl-7 col-md-7">
                     <div class="company_info">
-                        <h3>We are an SEO company that <br>
-                            specializes in developing.</h3>
+                        <h3>We are an English Course that
+                            specializes in upgrading skill</h3>
                             <p>Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing. Apartments frequently or motionless on reasonable.
                                 Steem spirit temper too say adieus who direct esteem.</p>
 
-                        <a href="#" class="boxed-btn3">About Us</a>
+                        <a href="/about-us" class="boxed-btn3">About Us</a>
                     </div>
                 </div>
             </div>
@@ -135,83 +135,61 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="case_active owl-carousel">
-                            <div class="single_study text-center">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/seogo/img/case_study/1.png')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="subheading">
-                                        <h4><a href="#">Product Design</a></h4>
-                                        <p>UI/UX, Design</p>
-                                    </div>
-                                </div>
-                            <div class="single_study text-center">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/seogo/img/case_study/2.png')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="subheading">
-                                        <h4><a href="#">Custom Website</a></h4>
-                                        <p>UI/UX, Design</p>
-                                    </div>
-                                </div>
-                            <div class="single_study text-center">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/seogo/img/case_study/3.png')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="subheading">
-                                        <h4><a href="#">Digital Marketing</a></h4>
-                                        <p>UI/UX, Design</p>
-                                    </div>
-                                </div>
-                            <div class="single_study text-center">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/seogo/img/case_study/1.png')}}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="subheading">
-                                        <h4><a href="#">Product Design</a></h4>
-                                        <p>UI/UX, Design</p>
-                                    </div>
-                                </div>
-                                <div class="single_study text-center">
-                                        <div class="thumb">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/seogo/img/case_study/2.png')}}" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="subheading">
-                                            <h4><a href="#">Custom Website</a></h4>
-                                            <p>UI/UX, Design</p>
-                                        </div>
-                                    </div>
-                                <div class="single_study text-center">
-                                        <div class="thumb">
-                                            <a href="#">
-                                                <img src="{{ asset('assets/seogo/img/case_study/3.png')}}" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="subheading">
-                                            <h4><a href="#">Digital Marketing</a></h4>
-                                            <p>UI/UX, Design</p>
-                                        </div>
-                                    </div>
-                                    <div class="single_study text-center">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="{{ asset('assets/seogo/img/case_study/3.png')}}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="subheading">
-                                                <h4><a href="#">Digital Marketing</a></h4>
-                                                <p>UI/UX, Design</p>
-                                            </div>
-                                        </div>
+                        <div class="single_study text-center">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="{{ asset('assets/seogo/img/case_study/1.png')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="subheading">
+                                <h4><a href="#">General English</a></h4>
+                                <p>General</p>
+                            </div>
+                        </div>
+                        <div class="single_study text-center">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="{{ asset('assets/seogo/img/case_study/2.png')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="subheading">
+                                <h4><a href="#">Business English</a></h4>
+                                <p>Special</p>
+                            </div>
+                        </div>
+                        <div class="single_study text-center">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="{{ asset('assets/seogo/img/case_study/3.png')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="subheading">
+                                <h4><a href="#">IELTS</a></h4>
+                                <p>Special</p>
+                            </div>
+                        </div>
+                        <div class="single_study text-center">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="{{ asset('assets/seogo/img/case_study/1.png')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="subheading">
+                                <h4><a href="#">Vocabulary</a></h4>
+                                <p>General</p>
+                            </div>
+                        </div>
+                        <div class="single_study text-center">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="{{ asset('assets/seogo/img/case_study/2.png')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="subheading">
+                                <h4><a href="#">Online Course</a></h4>
+                                <p>General</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -287,7 +265,7 @@
                 <div class="col-xl-12">
                     <div class="section_title text-center">
                         <h3>We have some awesome features <br>
-                            to rank your business</h3>
+                            to rank your english skill</h3>
                             <p>Esteem spirit temper too say adieus who direct esteem. It esteems luckily or <br> picture placing drawing. </p>
                     </div>
                 </div>
@@ -298,7 +276,7 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/feature_1.svg')}}" alt="">
                         </div>
-                        <h4>Custom design</h4>
+                        <h4>EC Homestay</h4>
                         <p>Esteem spirit temper too say adieus who direct esteem.</p>
                     </div>
                 </div>
@@ -307,7 +285,7 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/feature_2.svg')}}" alt="">
                         </div>
-                        <h4>Paid Search result</h4>
+                        <h4>EC Languanges Abroad</h4>
                         <p>Esteem spirit temper too say adieus who direct esteem.</p>
                     </div>
                 </div>
@@ -316,7 +294,7 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/feature_3.svg')}}" alt="">
                         </div>
-                        <h4>Global Search option</h4>
+                        <h4>Global Business</h4>
                         <p>Esteem spirit temper too say adieus who direct esteem.</p>
                     </div>
                 </div>
@@ -325,7 +303,7 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/feature_4.svg')}}" alt="">
                         </div>
-                        <h4>Email Marketing</h4>
+                        <h4>EC Academy</h4>
                         <p>Esteem spirit temper too say adieus who direct esteem.</p>
                     </div>
                 </div>
@@ -334,7 +312,7 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/feature_5.svg')}}" alt="">
                         </div>
-                        <h4>Custom Software</h4>
+                        <h4>EC Universitas Preparation</h4>
                         <p>Esteem spirit temper too say adieus who direct esteem.</p>
                     </div>
                 </div>
@@ -343,7 +321,7 @@
                         <div class="icon">
                             <img src="{{ asset('assets/seogo/img/svg_icon/feature_6.svg')}}" alt="">
                         </div>
-                        <h4>Setup business goal</h4>
+                        <h4>Business School</h4>
                         <p>Esteem spirit temper too say adieus who direct esteem.</p>
                     </div>
                 </div>
@@ -359,55 +337,63 @@
                 <div class="col-xl-12">
                     <div class="testmonial_active owl-carousel">
                         <div class="single_carousel">
-                                <div class="single_testmonial text-center">
-                                        <div class="quote">
-                                            <img src="{{ asset('assets/seogo/img/testmonial/quote.svg')}}" alt="">
-                                        </div>
-                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br> 
-                                                sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
-                                                Fusce ac mattis nulla. Morbi eget ornare dui. </p>
-                                        <div class="testmonial_author">
-                                            <div class="thumb">
-                                                    <img src="{{ asset('assets/seogo/img/testmonial/thumb.png')}}" alt="">
-                                            </div>
-                                            <h3>Robert Thomson</h3>
-                                            <span>Business Owner</span>
-                                        </div>
+                            <div class="single_testmonial text-center">
+                                <div class="quote">
+                                    <img src="{{ asset('assets/seogo/img/testmonial/quote.svg')}}" alt="">
+                                </div>
+                                <p>
+                                    I had a great time at The English Studio. Thanks to their friendly  <br> 
+                                    teachers and helpful staff, I could find the best course to suit me. In just <br>
+                                    three weeks I had the chance to fully <br> prepare for my exam and at the same time make <br>
+                                    friends with people from all over the world. <br>This was a wonderful experience that helped me become more confident <br>
+                                    in myself and I would be more than happy to repeat it all over again!
+                                </p>
+                                <div class="testmonial_author">
+                                    <div class="thumb">
+                                            <img src="{{ asset('assets/seogo/img/testmonial/thumb.png')}}" alt="">
                                     </div>
+                                    <h3>Robert Thomson</h3>
+                                    <span>Business Owner</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="single_carousel">
-                                <div class="single_testmonial text-center">
-                                        <div class="quote">
-                                            <img src="{{ asset('assets/seogo/img/testmonial/quote.svg')}}" alt="">
-                                        </div>
-                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br> 
-                                                sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
-                                                Fusce ac mattis nulla. Morbi eget ornare dui. </p>
-                                        <div class="testmonial_author">
-                                            <div class="thumb">
-                                                    <img src="{{ asset('assets/seogo/img/testmonial/thumb.png')}}" alt="">
-                                            </div>
-                                            <h3>Robert Thomson</h3>
-                                            <span>Business Owner</span>
-                                        </div>
+                            <div class="single_testmonial text-center">
+                                <div class="quote">
+                                    <img src="{{ asset('assets/seogo/img/testmonial/quote.svg')}}" alt="">
+                                </div>
+                                <p>
+                                    The teachers are great, they have excellent humour and make <br>
+                                    the classes very funny. They were also very patient and <br>
+                                    careful on my first days — always explaining in detail the topics and grammar.    
+                                </p>
+                                <div class="testmonial_author">
+                                    <div class="thumb">
+                                            <img src="{{ asset('assets/seogo/img/testmonial/thumb.png')}}" alt="">
                                     </div>
+                                    <h3>Robert Thomson</h3>
+                                    <span>Business Owner</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="single_carousel">
-                                <div class="single_testmonial text-center">
-                                        <div class="quote">
-                                            <img src="{{ asset('assets/seogo/img/testmonial/quote.svg')}}" alt="">
-                                        </div>
-                                        <p>Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor <br> 
-                                                sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed neque.  <br>
-                                                Fusce ac mattis nulla. Morbi eget ornare dui. </p>
-                                        <div class="testmonial_author">
-                                            <div class="thumb">
-                                                    <img src="{{ asset('assets/seogo/img/testmonial/thumb.png')}}" alt="">
-                                            </div>
-                                            <h3>Robert Thomson</h3>
-                                            <span>Business Owner</span>
-                                        </div>
+                            <div class="single_testmonial text-center">
+                                <div class="quote">
+                                    <img src="{{ asset('assets/seogo/img/testmonial/quote.svg')}}" alt="">
+                                </div>
+                                <p>
+                                    The English Studio is made up of friendly and helpful people. <br>
+                                    The thing I most appreciated is the professors. They are very competent and kind. <br>
+                                    In fact, they were ready to reply in detail to every question
+                                </p>
+                                <div class="testmonial_author">
+                                    <div class="thumb">
+                                            <img src="{{ asset('assets/seogo/img/testmonial/thumb.png')}}" alt="">
                                     </div>
+                                    <h3>Robert Thomson</h3>
+                                    <span>Business Owner</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

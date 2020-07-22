@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xl-6 col-md-6">
                     <div class="lets_projects">
-                        <h3>Let’s Start your project, <a href="#">Mail Us</a> </h3>
+                        <h3>Let’s Start your upgrading, <a href="#">Join Us</a> </h3>
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-6">
